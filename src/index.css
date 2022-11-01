@@ -118,6 +118,11 @@ Navbar
   text-align: center;
   margin-top: 5rem;
 }
+
+.error {
+   text-align: center;
+  margin-top: 14rem;
+}
 nav {
   background: var(--clr-primary);
   padding: 1.25rem 2rem;

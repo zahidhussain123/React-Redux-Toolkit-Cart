@@ -17,8 +17,14 @@ function App() {
     dispatch(calculateTotal());
   }, [cart, dispatch]);
 
+  const personalData = {
+    name: "Zahid Hussain",
+    address: "kashmir highway",
+    gender: "male",
+    age: "20",
+  };
   useEffect(() => {
-    dispatch(getCartData());
+    dispatch(getCartData(personalData));
   }, []);
 
   if (status === STATUSES.LOADING) {

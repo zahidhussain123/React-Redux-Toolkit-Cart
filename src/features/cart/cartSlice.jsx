@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import cartItems from "../../cartItems";
+// import { openModal } from "../modal/modalSlice";
+// import cartItems from "../../cartItems";
 
 export const STATUSES = Object.freeze({
   LOADING: "loading",
@@ -16,11 +17,22 @@ const initialState = {
 
 const url = "https://course-api.com/react-useReducer-cart-project";
 
-export const getCartData = createAsyncThunk("cart/fetch", async () => {
-  const result = await fetch(url);
-  const data = await result.json();
-  return data;
-});
+export const getCartData = createAsyncThunk(
+  "cart/fetch",
+  async (name, thunkApi) => {
+    console.log("bio adat", name);
+    // thunk api can access whole data across app
+    console.log("thunk api", thunkApi.getState());
+    // thunkApi.dispatch(openModal());
+    try {
+      const result = await fetch(url);
+      const data = await result.json();
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue("Error happens");
+    }
+  }
+);
 
 export const cartSlice = createSlice({
   name: "cart",

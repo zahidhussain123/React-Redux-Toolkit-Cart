@@ -20,7 +20,11 @@ const Modal = () => {
           >
             Confirm
           </button>
-          <button type="button" className="btn clear-btn">
+          <button
+            type="button"
+            className="btn clear-btn"
+            onClick={() => dispatch(closeModal())}
+          >
             cancel
           </button>
         </div>
